@@ -669,15 +669,14 @@ func (p *marshal) marshalBackward(varName string, varInt bool, message *protogen
 	}
 }
 
-func (p *marshal) marshalForward(varName string, varInt bool) {
-	p.P(`{`)
+func (p *marshal) marshalForward(varName string, flat bool) {
 	p.P(`size := `, varName, `.SizeVT()`)
 	p.P(`i -= size`)
-	p.P(`if _, err := `, varName, `.MarshalToVT(dAtA[i:]); err != nil {`)
-	p.P(`return 0, err`)
-	p.P(`}`)
-	if varInt {
-		p.encodeVarint(`size`)
+	if flat {
+		p.P(`if _, err := `, varName, `.MarshalToVTFlat(dAtA[i:]); err != nil {`)
+	} else {
+		p.P(`if _, err := `, varName, `.MarshalToVT(dAtA[i:]); err != nil {`)
 	}
+	p.P(`return 0, err`)
 	p.P(`}`)
 }
