@@ -15,7 +15,7 @@ import (
 
 func init() {
 	generator.RegisterFeature("flat_oneofs", func(gen *generator.GeneratedFile) generator.FeatureGenerator {
-		return &flat{GeneratedFile: gen, marshal: &marshal{GeneratedFile: gen, Stable: false}}
+		return &flat{GeneratedFile: gen, marshal: &marshal{GeneratedFile: gen, Stable: false, flat: true}}
 	})
 }
 
@@ -99,7 +99,7 @@ func (p *flat) message(proto3 bool, message *protogen.Message) {
 			p.field(proto3, false, &numGen, field)
 		} else {
 			p.P(`if msg, ok := m.`, field.Oneof.GoName, `.(*`, field.GoIdent.GoName, `); ok {`)
-			p.marshalForward("msg", true)
+			p.marshalForward("msg")
 			p.P(`}`)
 		}
 	}

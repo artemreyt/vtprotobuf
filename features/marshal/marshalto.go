@@ -20,7 +20,7 @@ import (
 
 func init() {
 	generator.RegisterFeature("marshal", func(gen *generator.GeneratedFile) generator.FeatureGenerator {
-		return &marshal{GeneratedFile: gen, Stable: false}
+		return &marshal{GeneratedFile: gen, Stable: false, flat: false}
 	})
 }
 
@@ -37,7 +37,7 @@ func (cnt *counter) Current() string {
 
 type marshal struct {
 	*generator.GeneratedFile
-	Stable, once bool
+	Stable, once, flat bool
 }
 
 var _ generator.FeatureGenerator = (*marshal)(nil)
@@ -600,7 +600,7 @@ func (p *marshal) message(proto3 bool, message *protogen.Message) {
 				p.P(`MarshalToVT([]byte) (int, error)`)
 				p.P(`SizeVT() int`)
 				p.P(`}); ok {`)
-				p.marshalForward("vtmsg", false)
+				p.marshalForward("vtmsg")
 				p.P(`}`)
 			}
 		}
@@ -637,13 +637,17 @@ func (p *marshal) reverseListRange(expression ...string) string {
 func (p *marshal) marshalBackward(varName string, varInt bool, message *protogen.Message) {
 	local := p.IsLocalMessage(message)
 
+	marshalToSizedBufferMeth := "MarshalToSizedBufferVT"
+	if p.flat {
+		marshalToSizedBufferMeth = "MarshalToSizedBufferVTFlat"
+	}
 	if local {
-		p.P(`size, err := `, varName, `.MarshalToSizedBufferVT(dAtA[:i])`)
+		p.P(`size, err := `, varName, `.`, marshalToSizedBufferMeth, ` (dAtA[:i])`)
 	} else {
 		p.P(`if marshalto, ok := interface{}(`, varName, `).(interface{`)
-		p.P(`MarshalToSizedBufferVT([]byte) (int, error)`)
+		p.P(marshalToSizedBufferMeth, `([]byte) (int, error)`)
 		p.P(`}); ok{`)
-		p.P(`size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])`)
+		p.P(`size, err := marshalto.`, marshalToSizedBufferMeth, `(dAtA[:i])`)
 	}
 
 	p.P(`if err != nil {`)
@@ -669,10 +673,10 @@ func (p *marshal) marshalBackward(varName string, varInt bool, message *protogen
 	}
 }
 
-func (p *marshal) marshalForward(varName string, flat bool) {
+func (p *marshal) marshalForward(varName string) {
 	p.P(`size := `, varName, `.SizeVT()`)
 	p.P(`i -= size`)
-	if flat {
+	if p.flat {
 		p.P(`if _, err := `, varName, `.MarshalToVTFlat(dAtA[i:]); err != nil {`)
 	} else {
 		p.P(`if _, err := `, varName, `.MarshalToVT(dAtA[i:]); err != nil {`)
