@@ -586,23 +586,35 @@ func (p *marshal) message(proto3 bool, message *protogen.Message) {
 		return message.Fields[i].Desc.Number() < message.Fields[j].Desc.Number()
 	})
 
-	oneofs := make(map[string]struct{})
+	// To match the wire format of proto.Marshal, oneofs have to be marshaled
+	// before fields. See https://github.com/planetscale/vtprotobuf/pull/22
+
+	oneofs := make(map[string]struct{}, len(message.Fields))
+	for i := len(message.Fields) - 1; i >= 0; i-- {
+		field := message.Fields[i]
+		oneof := field.Oneof != nil && !field.Oneof.Desc.IsSynthetic()
+		if oneof {
+			fieldname := field.Oneof.GoName
+			if _, ok := oneofs[fieldname]; !ok {
+				oneofs[fieldname] = struct{}{}
+				p.P(`if vtmsg, ok := m.`, fieldname, `.(interface{`)
+				p.P(`MarshalToSizedBufferVT([]byte) (int, error)`)
+				p.P(`}); ok {`)
+				p.P(`size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])`)
+				p.P(`if err != nil {`)
+				p.P(`return 0, err`)
+				p.P(`}`)
+				p.P(`i -= size`)
+				p.P(`}`)
+			}
+		}
+	}
+
 	for i := len(message.Fields) - 1; i >= 0; i-- {
 		field := message.Fields[i]
 		oneof := field.Oneof != nil && !field.Oneof.Desc.IsSynthetic()
 		if !oneof {
 			p.field(proto3, false, &numGen, field)
-		} else {
-			fieldname := field.Oneof.GoName
-			if _, ok := oneofs[fieldname]; !ok {
-				oneofs[fieldname] = struct{}{}
-				p.P(`if vtmsg, ok := m.`, fieldname, `.(interface{`)
-				p.P(`MarshalToVT([]byte) (int, error)`)
-				p.P(`SizeVT() int`)
-				p.P(`}); ok {`)
-				p.marshalForward("vtmsg")
-				p.P(`}`)
-			}
 		}
 	}
 	p.P(`return len(dAtA) - i, nil`)
@@ -644,10 +656,10 @@ func (p *marshal) marshalBackward(varName string, varInt bool, message *protogen
 	if local {
 		p.P(`size, err := `, varName, `.`, marshalToSizedBufferMeth, ` (dAtA[:i])`)
 	} else {
-		p.P(`if marshalto, ok := interface{}(`, varName, `).(interface{`)
+		p.P(`if vtmsg, ok := interface{}(`, varName, `).(interface{`)
 		p.P(marshalToSizedBufferMeth, `([]byte) (int, error)`)
 		p.P(`}); ok{`)
-		p.P(`size, err := marshalto.`, marshalToSizedBufferMeth, `(dAtA[:i])`)
+		p.P(`size, err := vtmsg.`, marshalToSizedBufferMeth, `(dAtA[:i])`)
 	}
 
 	p.P(`if err != nil {`)
@@ -671,16 +683,4 @@ func (p *marshal) marshalBackward(varName string, varInt bool, message *protogen
 		}
 		p.P(`}`)
 	}
-}
-
-func (p *marshal) marshalForward(varName string) {
-	p.P(`size := `, varName, `.SizeVT()`)
-	p.P(`i -= size`)
-	if p.flat {
-		p.P(`if _, err := `, varName, `.MarshalToVTFlat(dAtA[i:]); err != nil {`)
-	} else {
-		p.P(`if _, err := `, varName, `.MarshalToVT(dAtA[i:]); err != nil {`)
-	}
-	p.P(`return 0, err`)
-	p.P(`}`)
 }

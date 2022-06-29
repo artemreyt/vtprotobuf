@@ -19,6 +19,21 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+func (this *MemoryPoolExtension) EqualVT(that *MemoryPoolExtension) bool {
+	if this == nil {
+		return that == nil || that.String() == ""
+	} else if that == nil {
+		return this.String() == ""
+	}
+	if this.Foo1 != that.Foo1 {
+		return false
+	}
+	if this.Foo2 != that.Foo2 {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
 func (m *MemoryPoolExtension) MarshalVT() (dAtA []byte, err error) {
 	if m == nil {
 		return nil, nil
@@ -107,9 +122,7 @@ func (m *MemoryPoolExtension) SizeVT() (n int) {
 	if m.Foo2 != 0 {
 		n += 1 + sov(uint64(m.Foo2))
 	}
-	if m.unknownFields != nil {
-		n += len(m.unknownFields)
-	}
+	n += len(m.unknownFields)
 	return n
 }
 

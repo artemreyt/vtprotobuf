@@ -17,6 +17,118 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+func (this *FailureSet) EqualVT(that *FailureSet) bool {
+	if this == nil {
+		return that == nil || that.String() == ""
+	} else if that == nil {
+		return this.String() == ""
+	}
+	if len(this.Failure) != len(that.Failure) {
+		return false
+	}
+	for i := range this.Failure {
+		if this.Failure[i] != that.Failure[i] {
+			return false
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ConformanceRequest) EqualVT(that *ConformanceRequest) bool {
+	if this == nil {
+		return that == nil || that.String() == ""
+	} else if that == nil {
+		return this.String() == ""
+	}
+	if this.Payload == nil && that.Payload != nil {
+		return false
+	} else if this.Payload != nil {
+		if that.Payload == nil {
+			return false
+		}
+		if string(this.GetProtobufPayload()) != string(that.GetProtobufPayload()) {
+			return false
+		}
+		if this.GetJsonPayload() != that.GetJsonPayload() {
+			return false
+		}
+		if this.GetJspbPayload() != that.GetJspbPayload() {
+			return false
+		}
+		if this.GetTextPayload() != that.GetTextPayload() {
+			return false
+		}
+	}
+	if this.RequestedOutputFormat != that.RequestedOutputFormat {
+		return false
+	}
+	if this.MessageType != that.MessageType {
+		return false
+	}
+	if this.TestCategory != that.TestCategory {
+		return false
+	}
+	if !this.JspbEncodingOptions.EqualVT(that.JspbEncodingOptions) {
+		return false
+	}
+	if this.PrintUnknownFields != that.PrintUnknownFields {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ConformanceResponse) EqualVT(that *ConformanceResponse) bool {
+	if this == nil {
+		return that == nil || that.String() == ""
+	} else if that == nil {
+		return this.String() == ""
+	}
+	if this.Result == nil && that.Result != nil {
+		return false
+	} else if this.Result != nil {
+		if that.Result == nil {
+			return false
+		}
+		if this.GetParseError() != that.GetParseError() {
+			return false
+		}
+		if this.GetRuntimeError() != that.GetRuntimeError() {
+			return false
+		}
+		if string(this.GetProtobufPayload()) != string(that.GetProtobufPayload()) {
+			return false
+		}
+		if this.GetJsonPayload() != that.GetJsonPayload() {
+			return false
+		}
+		if this.GetSkipped() != that.GetSkipped() {
+			return false
+		}
+		if this.GetSerializeError() != that.GetSerializeError() {
+			return false
+		}
+		if this.GetJspbPayload() != that.GetJspbPayload() {
+			return false
+		}
+		if this.GetTextPayload() != that.GetTextPayload() {
+			return false
+		}
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *JspbEncodingConfig) EqualVT(that *JspbEncodingConfig) bool {
+	if this == nil {
+		return that == nil || that.String() == ""
+	} else if that == nil {
+		return this.String() == ""
+	}
+	if this.UseJspbArrayAnyFormat != that.UseJspbArrayAnyFormat {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
 func (m *FailureSet) MarshalVT() (dAtA []byte, err error) {
 	if m == nil {
 		return nil, nil
@@ -89,6 +201,15 @@ func (m *ConformanceRequest) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		i -= len(m.unknownFields)
 		copy(dAtA[i:], m.unknownFields)
 	}
+	if vtmsg, ok := m.Payload.(interface {
+		MarshalToSizedBufferVT([]byte) (int, error)
+	}); ok {
+		size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+	}
 	if m.PrintUnknownFields {
 		i--
 		if m.PrintUnknownFields {
@@ -98,18 +219,6 @@ func (m *ConformanceRequest) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		}
 		i--
 		dAtA[i] = 0x48
-	}
-	if vtmsg, ok := m.Payload.(interface {
-		MarshalToVT([]byte) (int, error)
-		SizeVT() int
-	}); ok {
-		{
-			size := vtmsg.SizeVT()
-			i -= size
-			if _, err := vtmsg.MarshalToVT(dAtA[i:]); err != nil {
-				return 0, err
-			}
-		}
 	}
 	if m.JspbEncodingOptions != nil {
 		size, err := m.JspbEncodingOptions.MarshalToSizedBufferVT(dAtA[:i])
@@ -228,16 +337,13 @@ func (m *ConformanceResponse) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		copy(dAtA[i:], m.unknownFields)
 	}
 	if vtmsg, ok := m.Result.(interface {
-		MarshalToVT([]byte) (int, error)
-		SizeVT() int
+		MarshalToSizedBufferVT([]byte) (int, error)
 	}); ok {
-		{
-			size := vtmsg.SizeVT()
-			i -= size
-			if _, err := vtmsg.MarshalToVT(dAtA[i:]); err != nil {
-				return 0, err
-			}
+		size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
+		if err != nil {
+			return 0, err
 		}
+		i -= size
 	}
 	return len(dAtA) - i, nil
 }
@@ -409,9 +515,7 @@ func (m *FailureSet) SizeVT() (n int) {
 			n += 1 + l + sov(uint64(l))
 		}
 	}
-	if m.unknownFields != nil {
-		n += len(m.unknownFields)
-	}
+	n += len(m.unknownFields)
 	return n
 }
 
@@ -441,9 +545,7 @@ func (m *ConformanceRequest) SizeVT() (n int) {
 	if m.PrintUnknownFields {
 		n += 2
 	}
-	if m.unknownFields != nil {
-		n += len(m.unknownFields)
-	}
+	n += len(m.unknownFields)
 	return n
 }
 
@@ -496,9 +598,7 @@ func (m *ConformanceResponse) SizeVT() (n int) {
 	if vtmsg, ok := m.Result.(interface{ SizeVT() int }); ok {
 		n += vtmsg.SizeVT()
 	}
-	if m.unknownFields != nil {
-		n += len(m.unknownFields)
-	}
+	n += len(m.unknownFields)
 	return n
 }
 
@@ -591,9 +691,7 @@ func (m *JspbEncodingConfig) SizeVT() (n int) {
 	if m.UseJspbArrayAnyFormat {
 		n += 2
 	}
-	if m.unknownFields != nil {
-		n += len(m.unknownFields)
-	}
+	n += len(m.unknownFields)
 	return n
 }
 

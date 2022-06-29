@@ -26,6 +26,1114 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+func (this *TestAllTypesProto3_NestedMessage) EqualVT(that *TestAllTypesProto3_NestedMessage) bool {
+	if this == nil {
+		return that == nil || that.String() == ""
+	} else if that == nil {
+		return this.String() == ""
+	}
+	if this.A != that.A {
+		return false
+	}
+	if !this.Corecursive.EqualVT(that.Corecursive) {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *TestAllTypesProto3) EqualVT(that *TestAllTypesProto3) bool {
+	if this == nil {
+		return that == nil || that.String() == ""
+	} else if that == nil {
+		return this.String() == ""
+	}
+	if this.OneofField == nil && that.OneofField != nil {
+		return false
+	} else if this.OneofField != nil {
+		if that.OneofField == nil {
+			return false
+		}
+		if this.GetOneofUint32() != that.GetOneofUint32() {
+			return false
+		}
+		if !this.GetOneofNestedMessage().EqualVT(that.GetOneofNestedMessage()) {
+			return false
+		}
+		if this.GetOneofString() != that.GetOneofString() {
+			return false
+		}
+		if string(this.GetOneofBytes()) != string(that.GetOneofBytes()) {
+			return false
+		}
+		if this.GetOneofBool() != that.GetOneofBool() {
+			return false
+		}
+		if this.GetOneofUint64() != that.GetOneofUint64() {
+			return false
+		}
+		if this.GetOneofFloat() != that.GetOneofFloat() {
+			return false
+		}
+		if this.GetOneofDouble() != that.GetOneofDouble() {
+			return false
+		}
+		if this.GetOneofEnum() != that.GetOneofEnum() {
+			return false
+		}
+		if this.GetOneofNullValue() != that.GetOneofNullValue() {
+			return false
+		}
+	}
+	if this.OptionalInt32 != that.OptionalInt32 {
+		return false
+	}
+	if this.OptionalInt64 != that.OptionalInt64 {
+		return false
+	}
+	if this.OptionalUint32 != that.OptionalUint32 {
+		return false
+	}
+	if this.OptionalUint64 != that.OptionalUint64 {
+		return false
+	}
+	if this.OptionalSint32 != that.OptionalSint32 {
+		return false
+	}
+	if this.OptionalSint64 != that.OptionalSint64 {
+		return false
+	}
+	if this.OptionalFixed32 != that.OptionalFixed32 {
+		return false
+	}
+	if this.OptionalFixed64 != that.OptionalFixed64 {
+		return false
+	}
+	if this.OptionalSfixed32 != that.OptionalSfixed32 {
+		return false
+	}
+	if this.OptionalSfixed64 != that.OptionalSfixed64 {
+		return false
+	}
+	if this.OptionalFloat != that.OptionalFloat {
+		return false
+	}
+	if this.OptionalDouble != that.OptionalDouble {
+		return false
+	}
+	if this.OptionalBool != that.OptionalBool {
+		return false
+	}
+	if this.OptionalString != that.OptionalString {
+		return false
+	}
+	if string(this.OptionalBytes) != string(that.OptionalBytes) {
+		return false
+	}
+	if !this.OptionalNestedMessage.EqualVT(that.OptionalNestedMessage) {
+		return false
+	}
+	if !this.OptionalForeignMessage.EqualVT(that.OptionalForeignMessage) {
+		return false
+	}
+	if this.OptionalNestedEnum != that.OptionalNestedEnum {
+		return false
+	}
+	if this.OptionalForeignEnum != that.OptionalForeignEnum {
+		return false
+	}
+	if this.OptionalAliasedEnum != that.OptionalAliasedEnum {
+		return false
+	}
+	if this.OptionalStringPiece != that.OptionalStringPiece {
+		return false
+	}
+	if this.OptionalCord != that.OptionalCord {
+		return false
+	}
+	if !this.RecursiveMessage.EqualVT(that.RecursiveMessage) {
+		return false
+	}
+	if len(this.RepeatedInt32) != len(that.RepeatedInt32) {
+		return false
+	}
+	for i := range this.RepeatedInt32 {
+		if this.RepeatedInt32[i] != that.RepeatedInt32[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedInt64) != len(that.RepeatedInt64) {
+		return false
+	}
+	for i := range this.RepeatedInt64 {
+		if this.RepeatedInt64[i] != that.RepeatedInt64[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedUint32) != len(that.RepeatedUint32) {
+		return false
+	}
+	for i := range this.RepeatedUint32 {
+		if this.RepeatedUint32[i] != that.RepeatedUint32[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedUint64) != len(that.RepeatedUint64) {
+		return false
+	}
+	for i := range this.RepeatedUint64 {
+		if this.RepeatedUint64[i] != that.RepeatedUint64[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedSint32) != len(that.RepeatedSint32) {
+		return false
+	}
+	for i := range this.RepeatedSint32 {
+		if this.RepeatedSint32[i] != that.RepeatedSint32[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedSint64) != len(that.RepeatedSint64) {
+		return false
+	}
+	for i := range this.RepeatedSint64 {
+		if this.RepeatedSint64[i] != that.RepeatedSint64[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedFixed32) != len(that.RepeatedFixed32) {
+		return false
+	}
+	for i := range this.RepeatedFixed32 {
+		if this.RepeatedFixed32[i] != that.RepeatedFixed32[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedFixed64) != len(that.RepeatedFixed64) {
+		return false
+	}
+	for i := range this.RepeatedFixed64 {
+		if this.RepeatedFixed64[i] != that.RepeatedFixed64[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedSfixed32) != len(that.RepeatedSfixed32) {
+		return false
+	}
+	for i := range this.RepeatedSfixed32 {
+		if this.RepeatedSfixed32[i] != that.RepeatedSfixed32[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedSfixed64) != len(that.RepeatedSfixed64) {
+		return false
+	}
+	for i := range this.RepeatedSfixed64 {
+		if this.RepeatedSfixed64[i] != that.RepeatedSfixed64[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedFloat) != len(that.RepeatedFloat) {
+		return false
+	}
+	for i := range this.RepeatedFloat {
+		if this.RepeatedFloat[i] != that.RepeatedFloat[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedDouble) != len(that.RepeatedDouble) {
+		return false
+	}
+	for i := range this.RepeatedDouble {
+		if this.RepeatedDouble[i] != that.RepeatedDouble[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedBool) != len(that.RepeatedBool) {
+		return false
+	}
+	for i := range this.RepeatedBool {
+		if this.RepeatedBool[i] != that.RepeatedBool[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedString) != len(that.RepeatedString) {
+		return false
+	}
+	for i := range this.RepeatedString {
+		if this.RepeatedString[i] != that.RepeatedString[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedBytes) != len(that.RepeatedBytes) {
+		return false
+	}
+	for i := range this.RepeatedBytes {
+		if string(this.RepeatedBytes[i]) != string(that.RepeatedBytes[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedNestedMessage) != len(that.RepeatedNestedMessage) {
+		return false
+	}
+	for i := range this.RepeatedNestedMessage {
+		if !this.RepeatedNestedMessage[i].EqualVT(that.RepeatedNestedMessage[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedForeignMessage) != len(that.RepeatedForeignMessage) {
+		return false
+	}
+	for i := range this.RepeatedForeignMessage {
+		if !this.RepeatedForeignMessage[i].EqualVT(that.RepeatedForeignMessage[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedNestedEnum) != len(that.RepeatedNestedEnum) {
+		return false
+	}
+	for i := range this.RepeatedNestedEnum {
+		if this.RepeatedNestedEnum[i] != that.RepeatedNestedEnum[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedForeignEnum) != len(that.RepeatedForeignEnum) {
+		return false
+	}
+	for i := range this.RepeatedForeignEnum {
+		if this.RepeatedForeignEnum[i] != that.RepeatedForeignEnum[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedStringPiece) != len(that.RepeatedStringPiece) {
+		return false
+	}
+	for i := range this.RepeatedStringPiece {
+		if this.RepeatedStringPiece[i] != that.RepeatedStringPiece[i] {
+			return false
+		}
+	}
+	if len(this.RepeatedCord) != len(that.RepeatedCord) {
+		return false
+	}
+	for i := range this.RepeatedCord {
+		if this.RepeatedCord[i] != that.RepeatedCord[i] {
+			return false
+		}
+	}
+	if len(this.MapInt32Int32) != len(that.MapInt32Int32) {
+		return false
+	}
+	for i := range this.MapInt32Int32 {
+		if this.MapInt32Int32[i] != that.MapInt32Int32[i] {
+			return false
+		}
+	}
+	if len(this.MapInt64Int64) != len(that.MapInt64Int64) {
+		return false
+	}
+	for i := range this.MapInt64Int64 {
+		if this.MapInt64Int64[i] != that.MapInt64Int64[i] {
+			return false
+		}
+	}
+	if len(this.MapUint32Uint32) != len(that.MapUint32Uint32) {
+		return false
+	}
+	for i := range this.MapUint32Uint32 {
+		if this.MapUint32Uint32[i] != that.MapUint32Uint32[i] {
+			return false
+		}
+	}
+	if len(this.MapUint64Uint64) != len(that.MapUint64Uint64) {
+		return false
+	}
+	for i := range this.MapUint64Uint64 {
+		if this.MapUint64Uint64[i] != that.MapUint64Uint64[i] {
+			return false
+		}
+	}
+	if len(this.MapSint32Sint32) != len(that.MapSint32Sint32) {
+		return false
+	}
+	for i := range this.MapSint32Sint32 {
+		if this.MapSint32Sint32[i] != that.MapSint32Sint32[i] {
+			return false
+		}
+	}
+	if len(this.MapSint64Sint64) != len(that.MapSint64Sint64) {
+		return false
+	}
+	for i := range this.MapSint64Sint64 {
+		if this.MapSint64Sint64[i] != that.MapSint64Sint64[i] {
+			return false
+		}
+	}
+	if len(this.MapFixed32Fixed32) != len(that.MapFixed32Fixed32) {
+		return false
+	}
+	for i := range this.MapFixed32Fixed32 {
+		if this.MapFixed32Fixed32[i] != that.MapFixed32Fixed32[i] {
+			return false
+		}
+	}
+	if len(this.MapFixed64Fixed64) != len(that.MapFixed64Fixed64) {
+		return false
+	}
+	for i := range this.MapFixed64Fixed64 {
+		if this.MapFixed64Fixed64[i] != that.MapFixed64Fixed64[i] {
+			return false
+		}
+	}
+	if len(this.MapSfixed32Sfixed32) != len(that.MapSfixed32Sfixed32) {
+		return false
+	}
+	for i := range this.MapSfixed32Sfixed32 {
+		if this.MapSfixed32Sfixed32[i] != that.MapSfixed32Sfixed32[i] {
+			return false
+		}
+	}
+	if len(this.MapSfixed64Sfixed64) != len(that.MapSfixed64Sfixed64) {
+		return false
+	}
+	for i := range this.MapSfixed64Sfixed64 {
+		if this.MapSfixed64Sfixed64[i] != that.MapSfixed64Sfixed64[i] {
+			return false
+		}
+	}
+	if len(this.MapInt32Float) != len(that.MapInt32Float) {
+		return false
+	}
+	for i := range this.MapInt32Float {
+		if this.MapInt32Float[i] != that.MapInt32Float[i] {
+			return false
+		}
+	}
+	if len(this.MapInt32Double) != len(that.MapInt32Double) {
+		return false
+	}
+	for i := range this.MapInt32Double {
+		if this.MapInt32Double[i] != that.MapInt32Double[i] {
+			return false
+		}
+	}
+	if len(this.MapBoolBool) != len(that.MapBoolBool) {
+		return false
+	}
+	for i := range this.MapBoolBool {
+		if this.MapBoolBool[i] != that.MapBoolBool[i] {
+			return false
+		}
+	}
+	if len(this.MapStringString) != len(that.MapStringString) {
+		return false
+	}
+	for i := range this.MapStringString {
+		if this.MapStringString[i] != that.MapStringString[i] {
+			return false
+		}
+	}
+	if len(this.MapStringBytes) != len(that.MapStringBytes) {
+		return false
+	}
+	for i := range this.MapStringBytes {
+		if string(this.MapStringBytes[i]) != string(that.MapStringBytes[i]) {
+			return false
+		}
+	}
+	if len(this.MapStringNestedMessage) != len(that.MapStringNestedMessage) {
+		return false
+	}
+	for i := range this.MapStringNestedMessage {
+		if !this.MapStringNestedMessage[i].EqualVT(that.MapStringNestedMessage[i]) {
+			return false
+		}
+	}
+	if len(this.MapStringForeignMessage) != len(that.MapStringForeignMessage) {
+		return false
+	}
+	for i := range this.MapStringForeignMessage {
+		if !this.MapStringForeignMessage[i].EqualVT(that.MapStringForeignMessage[i]) {
+			return false
+		}
+	}
+	if len(this.MapStringNestedEnum) != len(that.MapStringNestedEnum) {
+		return false
+	}
+	for i := range this.MapStringNestedEnum {
+		if this.MapStringNestedEnum[i] != that.MapStringNestedEnum[i] {
+			return false
+		}
+	}
+	if len(this.MapStringForeignEnum) != len(that.MapStringForeignEnum) {
+		return false
+	}
+	for i := range this.MapStringForeignEnum {
+		if this.MapStringForeignEnum[i] != that.MapStringForeignEnum[i] {
+			return false
+		}
+	}
+	if len(this.PackedInt32) != len(that.PackedInt32) {
+		return false
+	}
+	for i := range this.PackedInt32 {
+		if this.PackedInt32[i] != that.PackedInt32[i] {
+			return false
+		}
+	}
+	if len(this.PackedInt64) != len(that.PackedInt64) {
+		return false
+	}
+	for i := range this.PackedInt64 {
+		if this.PackedInt64[i] != that.PackedInt64[i] {
+			return false
+		}
+	}
+	if len(this.PackedUint32) != len(that.PackedUint32) {
+		return false
+	}
+	for i := range this.PackedUint32 {
+		if this.PackedUint32[i] != that.PackedUint32[i] {
+			return false
+		}
+	}
+	if len(this.PackedUint64) != len(that.PackedUint64) {
+		return false
+	}
+	for i := range this.PackedUint64 {
+		if this.PackedUint64[i] != that.PackedUint64[i] {
+			return false
+		}
+	}
+	if len(this.PackedSint32) != len(that.PackedSint32) {
+		return false
+	}
+	for i := range this.PackedSint32 {
+		if this.PackedSint32[i] != that.PackedSint32[i] {
+			return false
+		}
+	}
+	if len(this.PackedSint64) != len(that.PackedSint64) {
+		return false
+	}
+	for i := range this.PackedSint64 {
+		if this.PackedSint64[i] != that.PackedSint64[i] {
+			return false
+		}
+	}
+	if len(this.PackedFixed32) != len(that.PackedFixed32) {
+		return false
+	}
+	for i := range this.PackedFixed32 {
+		if this.PackedFixed32[i] != that.PackedFixed32[i] {
+			return false
+		}
+	}
+	if len(this.PackedFixed64) != len(that.PackedFixed64) {
+		return false
+	}
+	for i := range this.PackedFixed64 {
+		if this.PackedFixed64[i] != that.PackedFixed64[i] {
+			return false
+		}
+	}
+	if len(this.PackedSfixed32) != len(that.PackedSfixed32) {
+		return false
+	}
+	for i := range this.PackedSfixed32 {
+		if this.PackedSfixed32[i] != that.PackedSfixed32[i] {
+			return false
+		}
+	}
+	if len(this.PackedSfixed64) != len(that.PackedSfixed64) {
+		return false
+	}
+	for i := range this.PackedSfixed64 {
+		if this.PackedSfixed64[i] != that.PackedSfixed64[i] {
+			return false
+		}
+	}
+	if len(this.PackedFloat) != len(that.PackedFloat) {
+		return false
+	}
+	for i := range this.PackedFloat {
+		if this.PackedFloat[i] != that.PackedFloat[i] {
+			return false
+		}
+	}
+	if len(this.PackedDouble) != len(that.PackedDouble) {
+		return false
+	}
+	for i := range this.PackedDouble {
+		if this.PackedDouble[i] != that.PackedDouble[i] {
+			return false
+		}
+	}
+	if len(this.PackedBool) != len(that.PackedBool) {
+		return false
+	}
+	for i := range this.PackedBool {
+		if this.PackedBool[i] != that.PackedBool[i] {
+			return false
+		}
+	}
+	if len(this.PackedNestedEnum) != len(that.PackedNestedEnum) {
+		return false
+	}
+	for i := range this.PackedNestedEnum {
+		if this.PackedNestedEnum[i] != that.PackedNestedEnum[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedInt32) != len(that.UnpackedInt32) {
+		return false
+	}
+	for i := range this.UnpackedInt32 {
+		if this.UnpackedInt32[i] != that.UnpackedInt32[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedInt64) != len(that.UnpackedInt64) {
+		return false
+	}
+	for i := range this.UnpackedInt64 {
+		if this.UnpackedInt64[i] != that.UnpackedInt64[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedUint32) != len(that.UnpackedUint32) {
+		return false
+	}
+	for i := range this.UnpackedUint32 {
+		if this.UnpackedUint32[i] != that.UnpackedUint32[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedUint64) != len(that.UnpackedUint64) {
+		return false
+	}
+	for i := range this.UnpackedUint64 {
+		if this.UnpackedUint64[i] != that.UnpackedUint64[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedSint32) != len(that.UnpackedSint32) {
+		return false
+	}
+	for i := range this.UnpackedSint32 {
+		if this.UnpackedSint32[i] != that.UnpackedSint32[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedSint64) != len(that.UnpackedSint64) {
+		return false
+	}
+	for i := range this.UnpackedSint64 {
+		if this.UnpackedSint64[i] != that.UnpackedSint64[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedFixed32) != len(that.UnpackedFixed32) {
+		return false
+	}
+	for i := range this.UnpackedFixed32 {
+		if this.UnpackedFixed32[i] != that.UnpackedFixed32[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedFixed64) != len(that.UnpackedFixed64) {
+		return false
+	}
+	for i := range this.UnpackedFixed64 {
+		if this.UnpackedFixed64[i] != that.UnpackedFixed64[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedSfixed32) != len(that.UnpackedSfixed32) {
+		return false
+	}
+	for i := range this.UnpackedSfixed32 {
+		if this.UnpackedSfixed32[i] != that.UnpackedSfixed32[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedSfixed64) != len(that.UnpackedSfixed64) {
+		return false
+	}
+	for i := range this.UnpackedSfixed64 {
+		if this.UnpackedSfixed64[i] != that.UnpackedSfixed64[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedFloat) != len(that.UnpackedFloat) {
+		return false
+	}
+	for i := range this.UnpackedFloat {
+		if this.UnpackedFloat[i] != that.UnpackedFloat[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedDouble) != len(that.UnpackedDouble) {
+		return false
+	}
+	for i := range this.UnpackedDouble {
+		if this.UnpackedDouble[i] != that.UnpackedDouble[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedBool) != len(that.UnpackedBool) {
+		return false
+	}
+	for i := range this.UnpackedBool {
+		if this.UnpackedBool[i] != that.UnpackedBool[i] {
+			return false
+		}
+	}
+	if len(this.UnpackedNestedEnum) != len(that.UnpackedNestedEnum) {
+		return false
+	}
+	for i := range this.UnpackedNestedEnum {
+		if this.UnpackedNestedEnum[i] != that.UnpackedNestedEnum[i] {
+			return false
+		}
+	}
+	if equal, ok := interface{}(this.OptionalBoolWrapper).(interface {
+		EqualVT(*wrapperspb.BoolValue) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalBoolWrapper) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalBoolWrapper, that.OptionalBoolWrapper) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalInt32Wrapper).(interface {
+		EqualVT(*wrapperspb.Int32Value) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalInt32Wrapper) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalInt32Wrapper, that.OptionalInt32Wrapper) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalInt64Wrapper).(interface {
+		EqualVT(*wrapperspb.Int64Value) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalInt64Wrapper) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalInt64Wrapper, that.OptionalInt64Wrapper) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalUint32Wrapper).(interface {
+		EqualVT(*wrapperspb.UInt32Value) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalUint32Wrapper) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalUint32Wrapper, that.OptionalUint32Wrapper) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalUint64Wrapper).(interface {
+		EqualVT(*wrapperspb.UInt64Value) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalUint64Wrapper) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalUint64Wrapper, that.OptionalUint64Wrapper) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalFloatWrapper).(interface {
+		EqualVT(*wrapperspb.FloatValue) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalFloatWrapper) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalFloatWrapper, that.OptionalFloatWrapper) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalDoubleWrapper).(interface {
+		EqualVT(*wrapperspb.DoubleValue) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalDoubleWrapper) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalDoubleWrapper, that.OptionalDoubleWrapper) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalStringWrapper).(interface {
+		EqualVT(*wrapperspb.StringValue) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalStringWrapper) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalStringWrapper, that.OptionalStringWrapper) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalBytesWrapper).(interface {
+		EqualVT(*wrapperspb.BytesValue) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalBytesWrapper) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalBytesWrapper, that.OptionalBytesWrapper) {
+		return false
+	}
+	if len(this.RepeatedBoolWrapper) != len(that.RepeatedBoolWrapper) {
+		return false
+	}
+	for i := range this.RepeatedBoolWrapper {
+		if equal, ok := interface{}(this.RepeatedBoolWrapper[i]).(interface {
+			EqualVT(*wrapperspb.BoolValue) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedBoolWrapper[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedBoolWrapper[i], that.RepeatedBoolWrapper[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedInt32Wrapper) != len(that.RepeatedInt32Wrapper) {
+		return false
+	}
+	for i := range this.RepeatedInt32Wrapper {
+		if equal, ok := interface{}(this.RepeatedInt32Wrapper[i]).(interface {
+			EqualVT(*wrapperspb.Int32Value) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedInt32Wrapper[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedInt32Wrapper[i], that.RepeatedInt32Wrapper[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedInt64Wrapper) != len(that.RepeatedInt64Wrapper) {
+		return false
+	}
+	for i := range this.RepeatedInt64Wrapper {
+		if equal, ok := interface{}(this.RepeatedInt64Wrapper[i]).(interface {
+			EqualVT(*wrapperspb.Int64Value) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedInt64Wrapper[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedInt64Wrapper[i], that.RepeatedInt64Wrapper[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedUint32Wrapper) != len(that.RepeatedUint32Wrapper) {
+		return false
+	}
+	for i := range this.RepeatedUint32Wrapper {
+		if equal, ok := interface{}(this.RepeatedUint32Wrapper[i]).(interface {
+			EqualVT(*wrapperspb.UInt32Value) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedUint32Wrapper[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedUint32Wrapper[i], that.RepeatedUint32Wrapper[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedUint64Wrapper) != len(that.RepeatedUint64Wrapper) {
+		return false
+	}
+	for i := range this.RepeatedUint64Wrapper {
+		if equal, ok := interface{}(this.RepeatedUint64Wrapper[i]).(interface {
+			EqualVT(*wrapperspb.UInt64Value) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedUint64Wrapper[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedUint64Wrapper[i], that.RepeatedUint64Wrapper[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedFloatWrapper) != len(that.RepeatedFloatWrapper) {
+		return false
+	}
+	for i := range this.RepeatedFloatWrapper {
+		if equal, ok := interface{}(this.RepeatedFloatWrapper[i]).(interface {
+			EqualVT(*wrapperspb.FloatValue) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedFloatWrapper[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedFloatWrapper[i], that.RepeatedFloatWrapper[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedDoubleWrapper) != len(that.RepeatedDoubleWrapper) {
+		return false
+	}
+	for i := range this.RepeatedDoubleWrapper {
+		if equal, ok := interface{}(this.RepeatedDoubleWrapper[i]).(interface {
+			EqualVT(*wrapperspb.DoubleValue) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedDoubleWrapper[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedDoubleWrapper[i], that.RepeatedDoubleWrapper[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedStringWrapper) != len(that.RepeatedStringWrapper) {
+		return false
+	}
+	for i := range this.RepeatedStringWrapper {
+		if equal, ok := interface{}(this.RepeatedStringWrapper[i]).(interface {
+			EqualVT(*wrapperspb.StringValue) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedStringWrapper[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedStringWrapper[i], that.RepeatedStringWrapper[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedBytesWrapper) != len(that.RepeatedBytesWrapper) {
+		return false
+	}
+	for i := range this.RepeatedBytesWrapper {
+		if equal, ok := interface{}(this.RepeatedBytesWrapper[i]).(interface {
+			EqualVT(*wrapperspb.BytesValue) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedBytesWrapper[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedBytesWrapper[i], that.RepeatedBytesWrapper[i]) {
+			return false
+		}
+	}
+	if equal, ok := interface{}(this.OptionalDuration).(interface {
+		EqualVT(*durationpb.Duration) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalDuration) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalDuration, that.OptionalDuration) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalTimestamp).(interface {
+		EqualVT(*timestamppb.Timestamp) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalTimestamp) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalTimestamp, that.OptionalTimestamp) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalFieldMask).(interface {
+		EqualVT(*fieldmaskpb.FieldMask) bool
+	}); ok {
+		if !equal.EqualVT(that.OptionalFieldMask) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalFieldMask, that.OptionalFieldMask) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalStruct).(interface{ EqualVT(*structpb.Struct) bool }); ok {
+		if !equal.EqualVT(that.OptionalStruct) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalStruct, that.OptionalStruct) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalAny).(interface{ EqualVT(*anypb.Any) bool }); ok {
+		if !equal.EqualVT(that.OptionalAny) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalAny, that.OptionalAny) {
+		return false
+	}
+	if equal, ok := interface{}(this.OptionalValue).(interface{ EqualVT(*structpb.Value) bool }); ok {
+		if !equal.EqualVT(that.OptionalValue) {
+			return false
+		}
+	} else if !proto.Equal(this.OptionalValue, that.OptionalValue) {
+		return false
+	}
+	if this.OptionalNullValue != that.OptionalNullValue {
+		return false
+	}
+	if len(this.RepeatedDuration) != len(that.RepeatedDuration) {
+		return false
+	}
+	for i := range this.RepeatedDuration {
+		if equal, ok := interface{}(this.RepeatedDuration[i]).(interface {
+			EqualVT(*durationpb.Duration) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedDuration[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedDuration[i], that.RepeatedDuration[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedTimestamp) != len(that.RepeatedTimestamp) {
+		return false
+	}
+	for i := range this.RepeatedTimestamp {
+		if equal, ok := interface{}(this.RepeatedTimestamp[i]).(interface {
+			EqualVT(*timestamppb.Timestamp) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedTimestamp[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedTimestamp[i], that.RepeatedTimestamp[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedFieldmask) != len(that.RepeatedFieldmask) {
+		return false
+	}
+	for i := range this.RepeatedFieldmask {
+		if equal, ok := interface{}(this.RepeatedFieldmask[i]).(interface {
+			EqualVT(*fieldmaskpb.FieldMask) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedFieldmask[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedFieldmask[i], that.RepeatedFieldmask[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedAny) != len(that.RepeatedAny) {
+		return false
+	}
+	for i := range this.RepeatedAny {
+		if equal, ok := interface{}(this.RepeatedAny[i]).(interface{ EqualVT(*anypb.Any) bool }); ok {
+			if !equal.EqualVT(that.RepeatedAny[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedAny[i], that.RepeatedAny[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedValue) != len(that.RepeatedValue) {
+		return false
+	}
+	for i := range this.RepeatedValue {
+		if equal, ok := interface{}(this.RepeatedValue[i]).(interface{ EqualVT(*structpb.Value) bool }); ok {
+			if !equal.EqualVT(that.RepeatedValue[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedValue[i], that.RepeatedValue[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedListValue) != len(that.RepeatedListValue) {
+		return false
+	}
+	for i := range this.RepeatedListValue {
+		if equal, ok := interface{}(this.RepeatedListValue[i]).(interface {
+			EqualVT(*structpb.ListValue) bool
+		}); ok {
+			if !equal.EqualVT(that.RepeatedListValue[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedListValue[i], that.RepeatedListValue[i]) {
+			return false
+		}
+	}
+	if len(this.RepeatedStruct) != len(that.RepeatedStruct) {
+		return false
+	}
+	for i := range this.RepeatedStruct {
+		if equal, ok := interface{}(this.RepeatedStruct[i]).(interface{ EqualVT(*structpb.Struct) bool }); ok {
+			if !equal.EqualVT(that.RepeatedStruct[i]) {
+				return false
+			}
+		} else if !proto.Equal(this.RepeatedStruct[i], that.RepeatedStruct[i]) {
+			return false
+		}
+	}
+	if this.Fieldname1 != that.Fieldname1 {
+		return false
+	}
+	if this.FieldName2 != that.FieldName2 {
+		return false
+	}
+	if this.XFieldName3 != that.XFieldName3 {
+		return false
+	}
+	if this.Field_Name4_ != that.Field_Name4_ {
+		return false
+	}
+	if this.Field0Name5 != that.Field0Name5 {
+		return false
+	}
+	if this.Field_0Name6 != that.Field_0Name6 {
+		return false
+	}
+	if this.FieldName7 != that.FieldName7 {
+		return false
+	}
+	if this.FieldName8 != that.FieldName8 {
+		return false
+	}
+	if this.Field_Name9 != that.Field_Name9 {
+		return false
+	}
+	if this.Field_Name10 != that.Field_Name10 {
+		return false
+	}
+	if this.FIELD_NAME11 != that.FIELD_NAME11 {
+		return false
+	}
+	if this.FIELDName12 != that.FIELDName12 {
+		return false
+	}
+	if this.XFieldName13 != that.XFieldName13 {
+		return false
+	}
+	if this.X_FieldName14 != that.X_FieldName14 {
+		return false
+	}
+	if this.Field_Name15 != that.Field_Name15 {
+		return false
+	}
+	if this.Field__Name16 != that.Field__Name16 {
+		return false
+	}
+	if this.FieldName17__ != that.FieldName17__ {
+		return false
+	}
+	if this.FieldName18__ != that.FieldName18__ {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *ForeignMessage) EqualVT(that *ForeignMessage) bool {
+	if this == nil {
+		return that == nil || that.String() == ""
+	} else if that == nil {
+		return this.String() == ""
+	}
+	if this.C != that.C {
+		return false
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *NullHypothesisProto3) EqualVT(that *NullHypothesisProto3) bool {
+	if this == nil {
+		return that == nil || that.String() == ""
+	} else if that == nil {
+		return this.String() == ""
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
+func (this *EnumOnlyProto3) EqualVT(that *EnumOnlyProto3) bool {
+	if this == nil {
+		return that == nil || that.String() == ""
+	} else if that == nil {
+		return this.String() == ""
+	}
+	return string(this.unknownFields) == string(that.unknownFields)
+}
+
 func (m *TestAllTypesProto3_NestedMessage) MarshalVT() (dAtA []byte, err error) {
 	if m == nil {
 		return nil, nil
@@ -103,6 +1211,15 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	if m.unknownFields != nil {
 		i -= len(m.unknownFields)
 		copy(dAtA[i:], m.unknownFields)
+	}
+	if vtmsg, ok := m.OneofField.(interface {
+		MarshalToSizedBufferVT([]byte) (int, error)
+	}); ok {
+		size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
 	}
 	if m.FieldName18__ != 0 {
 		i = encodeVarint(dAtA, i, uint64(m.FieldName18__))
@@ -232,10 +1349,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedStruct) > 0 {
 		for iNdEx := len(m.RepeatedStruct) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedStruct[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedStruct[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -258,10 +1375,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedListValue) > 0 {
 		for iNdEx := len(m.RepeatedListValue) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedListValue[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedListValue[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -284,10 +1401,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedValue) > 0 {
 		for iNdEx := len(m.RepeatedValue) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedValue[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedValue[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -310,10 +1427,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedAny) > 0 {
 		for iNdEx := len(m.RepeatedAny) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedAny[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedAny[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -336,10 +1453,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedFieldmask) > 0 {
 		for iNdEx := len(m.RepeatedFieldmask) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedFieldmask[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedFieldmask[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -362,10 +1479,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedTimestamp) > 0 {
 		for iNdEx := len(m.RepeatedTimestamp) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedTimestamp[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedTimestamp[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -388,10 +1505,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedDuration) > 0 {
 		for iNdEx := len(m.RepeatedDuration) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedDuration[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedDuration[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -420,10 +1537,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0x98
 	}
 	if m.OptionalValue != nil {
-		if marshalto, ok := interface{}(m.OptionalValue).(interface {
+		if vtmsg, ok := interface{}(m.OptionalValue).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -444,10 +1561,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0x92
 	}
 	if m.OptionalAny != nil {
-		if marshalto, ok := interface{}(m.OptionalAny).(interface {
+		if vtmsg, ok := interface{}(m.OptionalAny).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -468,10 +1585,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0x8a
 	}
 	if m.OptionalStruct != nil {
-		if marshalto, ok := interface{}(m.OptionalStruct).(interface {
+		if vtmsg, ok := interface{}(m.OptionalStruct).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -492,10 +1609,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0x82
 	}
 	if m.OptionalFieldMask != nil {
-		if marshalto, ok := interface{}(m.OptionalFieldMask).(interface {
+		if vtmsg, ok := interface{}(m.OptionalFieldMask).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -516,10 +1633,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0xfa
 	}
 	if m.OptionalTimestamp != nil {
-		if marshalto, ok := interface{}(m.OptionalTimestamp).(interface {
+		if vtmsg, ok := interface{}(m.OptionalTimestamp).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -540,10 +1657,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0xf2
 	}
 	if m.OptionalDuration != nil {
-		if marshalto, ok := interface{}(m.OptionalDuration).(interface {
+		if vtmsg, ok := interface{}(m.OptionalDuration).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -565,10 +1682,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedBytesWrapper) > 0 {
 		for iNdEx := len(m.RepeatedBytesWrapper) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedBytesWrapper[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedBytesWrapper[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -591,10 +1708,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedStringWrapper) > 0 {
 		for iNdEx := len(m.RepeatedStringWrapper) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedStringWrapper[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedStringWrapper[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -617,10 +1734,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedDoubleWrapper) > 0 {
 		for iNdEx := len(m.RepeatedDoubleWrapper) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedDoubleWrapper[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedDoubleWrapper[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -643,10 +1760,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedFloatWrapper) > 0 {
 		for iNdEx := len(m.RepeatedFloatWrapper) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedFloatWrapper[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedFloatWrapper[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -669,10 +1786,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedUint64Wrapper) > 0 {
 		for iNdEx := len(m.RepeatedUint64Wrapper) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedUint64Wrapper[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedUint64Wrapper[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -695,10 +1812,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedUint32Wrapper) > 0 {
 		for iNdEx := len(m.RepeatedUint32Wrapper) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedUint32Wrapper[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedUint32Wrapper[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -721,10 +1838,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedInt64Wrapper) > 0 {
 		for iNdEx := len(m.RepeatedInt64Wrapper) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedInt64Wrapper[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedInt64Wrapper[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -747,10 +1864,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedInt32Wrapper) > 0 {
 		for iNdEx := len(m.RepeatedInt32Wrapper) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedInt32Wrapper[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedInt32Wrapper[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -773,10 +1890,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	}
 	if len(m.RepeatedBoolWrapper) > 0 {
 		for iNdEx := len(m.RepeatedBoolWrapper) - 1; iNdEx >= 0; iNdEx-- {
-			if marshalto, ok := interface{}(m.RepeatedBoolWrapper[iNdEx]).(interface {
+			if vtmsg, ok := interface{}(m.RepeatedBoolWrapper[iNdEx]).(interface {
 				MarshalToSizedBufferVT([]byte) (int, error)
 			}); ok {
-				size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+				size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -798,10 +1915,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		}
 	}
 	if m.OptionalBytesWrapper != nil {
-		if marshalto, ok := interface{}(m.OptionalBytesWrapper).(interface {
+		if vtmsg, ok := interface{}(m.OptionalBytesWrapper).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -822,10 +1939,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0x8a
 	}
 	if m.OptionalStringWrapper != nil {
-		if marshalto, ok := interface{}(m.OptionalStringWrapper).(interface {
+		if vtmsg, ok := interface{}(m.OptionalStringWrapper).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -846,10 +1963,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0x82
 	}
 	if m.OptionalDoubleWrapper != nil {
-		if marshalto, ok := interface{}(m.OptionalDoubleWrapper).(interface {
+		if vtmsg, ok := interface{}(m.OptionalDoubleWrapper).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -870,10 +1987,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0xfa
 	}
 	if m.OptionalFloatWrapper != nil {
-		if marshalto, ok := interface{}(m.OptionalFloatWrapper).(interface {
+		if vtmsg, ok := interface{}(m.OptionalFloatWrapper).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -894,10 +2011,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0xf2
 	}
 	if m.OptionalUint64Wrapper != nil {
-		if marshalto, ok := interface{}(m.OptionalUint64Wrapper).(interface {
+		if vtmsg, ok := interface{}(m.OptionalUint64Wrapper).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -918,10 +2035,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0xea
 	}
 	if m.OptionalUint32Wrapper != nil {
-		if marshalto, ok := interface{}(m.OptionalUint32Wrapper).(interface {
+		if vtmsg, ok := interface{}(m.OptionalUint32Wrapper).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -942,10 +2059,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0xe2
 	}
 	if m.OptionalInt64Wrapper != nil {
-		if marshalto, ok := interface{}(m.OptionalInt64Wrapper).(interface {
+		if vtmsg, ok := interface{}(m.OptionalInt64Wrapper).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -966,10 +2083,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0xda
 	}
 	if m.OptionalInt32Wrapper != nil {
-		if marshalto, ok := interface{}(m.OptionalInt32Wrapper).(interface {
+		if vtmsg, ok := interface{}(m.OptionalInt32Wrapper).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -990,10 +2107,10 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0xd2
 	}
 	if m.OptionalBoolWrapper != nil {
-		if marshalto, ok := interface{}(m.OptionalBoolWrapper).(interface {
+		if vtmsg, ok := interface{}(m.OptionalBoolWrapper).(interface {
 			MarshalToSizedBufferVT([]byte) (int, error)
 		}); ok {
-			size, err := marshalto.MarshalToSizedBufferVT(dAtA[:i])
+			size, err := vtmsg.MarshalToSizedBufferVT(dAtA[:i])
 			if err != nil {
 				return 0, err
 			}
@@ -1012,18 +2129,6 @@ func (m *TestAllTypesProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 		dAtA[i] = 0xc
 		i--
 		dAtA[i] = 0xca
-	}
-	if vtmsg, ok := m.OneofField.(interface {
-		MarshalToVT([]byte) (int, error)
-		SizeVT() int
-	}); ok {
-		{
-			size := vtmsg.SizeVT()
-			i -= size
-			if _, err := vtmsg.MarshalToVT(dAtA[i:]); err != nil {
-				return 0, err
-			}
-		}
 	}
 	if len(m.UnpackedNestedEnum) > 0 {
 		for iNdEx := len(m.UnpackedNestedEnum) - 1; iNdEx >= 0; iNdEx-- {
@@ -2478,6 +3583,72 @@ func (m *ForeignMessage) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *NullHypothesisProto3) MarshalVT() (dAtA []byte, err error) {
+	if m == nil {
+		return nil, nil
+	}
+	size := m.SizeVT()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBufferVT(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *NullHypothesisProto3) MarshalToVT(dAtA []byte) (int, error) {
+	size := m.SizeVT()
+	return m.MarshalToSizedBufferVT(dAtA[:size])
+}
+
+func (m *NullHypothesisProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
+	if m == nil {
+		return 0, nil
+	}
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.unknownFields != nil {
+		i -= len(m.unknownFields)
+		copy(dAtA[i:], m.unknownFields)
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *EnumOnlyProto3) MarshalVT() (dAtA []byte, err error) {
+	if m == nil {
+		return nil, nil
+	}
+	size := m.SizeVT()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBufferVT(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *EnumOnlyProto3) MarshalToVT(dAtA []byte) (int, error) {
+	size := m.SizeVT()
+	return m.MarshalToSizedBufferVT(dAtA[:size])
+}
+
+func (m *EnumOnlyProto3) MarshalToSizedBufferVT(dAtA []byte) (int, error) {
+	if m == nil {
+		return 0, nil
+	}
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.unknownFields != nil {
+		i -= len(m.unknownFields)
+		copy(dAtA[i:], m.unknownFields)
+	}
+	return len(dAtA) - i, nil
+}
+
 func (m *TestAllTypesProto3_NestedMessage) SizeVT() (n int) {
 	if m == nil {
 		return 0
@@ -2491,9 +3662,7 @@ func (m *TestAllTypesProto3_NestedMessage) SizeVT() (n int) {
 		l = m.Corecursive.SizeVT()
 		n += 1 + l + sov(uint64(l))
 	}
-	if m.unknownFields != nil {
-		n += len(m.unknownFields)
-	}
+	n += len(m.unknownFields)
 	return n
 }
 
@@ -3383,9 +4552,7 @@ func (m *TestAllTypesProto3) SizeVT() (n int) {
 	if m.FieldName18__ != 0 {
 		n += 2 + sov(uint64(m.FieldName18__))
 	}
-	if m.unknownFields != nil {
-		n += len(m.unknownFields)
-	}
+	n += len(m.unknownFields)
 	return n
 }
 
@@ -3493,9 +4660,27 @@ func (m *ForeignMessage) SizeVT() (n int) {
 	if m.C != 0 {
 		n += 1 + sov(uint64(m.C))
 	}
-	if m.unknownFields != nil {
-		n += len(m.unknownFields)
+	n += len(m.unknownFields)
+	return n
+}
+
+func (m *NullHypothesisProto3) SizeVT() (n int) {
+	if m == nil {
+		return 0
 	}
+	var l int
+	_ = l
+	n += len(m.unknownFields)
+	return n
+}
+
+func (m *EnumOnlyProto3) SizeVT() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	n += len(m.unknownFields)
 	return n
 }
 
@@ -11087,6 +12272,108 @@ func (m *ForeignMessage) UnmarshalVT(dAtA []byte) error {
 					break
 				}
 			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skip(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLength
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.unknownFields = append(m.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *NullHypothesisProto3) UnmarshalVT(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflow
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: NullHypothesisProto3: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: NullHypothesisProto3: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skip(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLength
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.unknownFields = append(m.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *EnumOnlyProto3) UnmarshalVT(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflow
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: EnumOnlyProto3: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: EnumOnlyProto3: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
 		default:
 			iNdEx = preIndex
 			skippy, err := skip(dAtA[iNdEx:])

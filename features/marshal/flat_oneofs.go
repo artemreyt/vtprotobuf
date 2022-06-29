@@ -99,7 +99,11 @@ func (p *flat) message(proto3 bool, message *protogen.Message) {
 			p.field(proto3, false, &numGen, field)
 		} else {
 			p.P(`if msg, ok := m.`, field.Oneof.GoName, `.(*`, field.GoIdent.GoName, `); ok {`)
-			p.marshalForward("msg")
+			p.P(`size, err := msg.MarshalToSizedBufferVTFlat(dAtA[:i])`)
+			p.P(`if err != nil {`)
+			p.P(`return 0, err`)
+			p.P(`}`)
+			p.P(`i -= size`)
 			p.P(`}`)
 		}
 	}

@@ -1,12 +1,12 @@
 export GOBIN=$(PWD)/bin
-export PROTOBUF_ROOT=$(HOME)/src/protobuf-3.16.0
+export PROTOBUF_ROOT=$(PWD)/_vendor/protobuf-3.20.0
 
 .PHONY: install test gen-conformance gen-include genall
 
 install:
 	go install -tags protolegacy google.golang.org/protobuf/cmd/protoc-gen-go
 	go install -tags protolegacy ./cmd/protoc-gen-go-vtproto
-	go install -tags protolegacy github.com/gogo/protobuf/protoc-gen-gofast
+# 	go install -tags protolegacy github.com/gogo/protobuf/protoc-gen-gofast
 
 gen-conformance:
 	$(PROTOBUF_ROOT)/src/protoc \
@@ -33,17 +33,22 @@ gen-include:
 	mv include/github.com/planetscale/vtprotobuf/vtproto/*.go ./vtproto
 
 gen-testproto:
-	for name in "pool/pool.proto proto3opt/opt.proto proto2/scalars.proto"; do \
-		$(PROTOBUF_ROOT)/src/protoc \
-			--proto_path=testproto \
-			--proto_path=include \
-			--go_out=. --plugin protoc-gen-go="${GOBIN}/protoc-gen-go" \
-			--go-vtproto_out=. --plugin protoc-gen-go-vtproto="${GOBIN}/protoc-gen-go-vtproto" \
-			-I$(PROTOBUF_ROOT)/src \
-			testproto/$${name}; \
-  	done
+	$(PROTOBUF_ROOT)/src/protoc \
+		--proto_path=testproto \
+		--proto_path=include \
+		--go_out=. --plugin protoc-gen-go="${GOBIN}/protoc-gen-go" \
+		--go-vtproto_out=allow-empty=true:. --plugin protoc-gen-go-vtproto="${GOBIN}/protoc-gen-go-vtproto" \
+		-I$(PROTOBUF_ROOT)/src \
+		testproto/empty/empty.proto \
+		testproto/pool/pool.proto \
+		testproto/pool/pool_with_slice_reuse.proto \
+		testproto/proto3opt/opt.proto \
+		testproto/proto2/scalars.proto \
+		|| exit 1;
 
 genall: install gen-include gen-conformance gen-testproto
 
 test: install gen-conformance
+	go test -short ./...
 	go test -count=1 ./conformance/...
+	GOGC="off" go test -count=1 ./testproto/pool/...
