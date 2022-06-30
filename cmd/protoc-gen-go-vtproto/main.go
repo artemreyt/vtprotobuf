@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"strings"
 
-	_ "github.com/alexeykiselev/vtprotobuf/features/grpc"
-	_ "github.com/alexeykiselev/vtprotobuf/features/marshal"
-	_ "github.com/alexeykiselev/vtprotobuf/features/pool"
-	_ "github.com/alexeykiselev/vtprotobuf/features/size"
-	_ "github.com/alexeykiselev/vtprotobuf/features/unmarshal"
-	"github.com/alexeykiselev/vtprotobuf/generator"
+	_ "github.com/artemreyt/vtprotobuf/features/grpc"
+	_ "github.com/artemreyt/vtprotobuf/features/marshal"
+	_ "github.com/artemreyt/vtprotobuf/features/pool"
+	_ "github.com/artemreyt/vtprotobuf/features/size"
+	_ "github.com/artemreyt/vtprotobuf/features/unmarshal"
+	"github.com/artemreyt/vtprotobuf/generator"
 
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/types/pluginpb"

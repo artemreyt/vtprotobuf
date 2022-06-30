@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.26.0
 // 	protoc        v3.20.0
-// source: github.com/planetscale/vtprotobuf/vtproto/ext.proto
+// source: github.com/artemreyt/vtprotobuf/vtproto/ext.proto
 
 package vtproto
 
@@ -27,7 +27,7 @@ var file_github_com_planetscale_vtprotobuf_vtproto_ext_proto_extTypes = []protoi
 		Field:         64101,
 		Name:          "vtproto.mempool",
 		Tag:           "varint,64101,opt,name=mempool",
-		Filename:      "github.com/planetscale/vtprotobuf/vtproto/ext.proto",
+		Filename:      "github.com/artemreyt/vtprotobuf/vtproto/ext.proto",
 	},
 }
 

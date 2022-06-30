@@ -7,7 +7,7 @@
 package pool
 
 import (
-	_ "github.com/alexeykiselev/vtprotobuf/vtproto"
+	_ "github.com/artemreyt/vtprotobuf/vtproto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

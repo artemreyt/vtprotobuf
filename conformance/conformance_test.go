@@ -22,7 +22,7 @@ import (
 	"google.golang.org/protobuf/encoding/prototext"
 	"google.golang.org/protobuf/proto"
 
-	pb "github.com/alexeykiselev/vtprotobuf/conformance/internal/conformance"
+	pb "github.com/artemreyt/vtprotobuf/conformance/internal/conformance"
 )
 
 func init() {
