@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/artemreyt/vtprotobuf/generator"
+	"github.com/planetscale/vtprotobuf/generator"
 
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/encoding/protowire"
@@ -648,7 +648,7 @@ func (p *marshal) message(proto3 bool, message *protogen.Message) {
 		}
 	} else {
 		// To match the wire format of proto.Marshal, oneofs have to be marshaled
-		// before fields. See https://github.com/artemreyt/vtprotobuf/pull/22
+		// before fields. See https://github.com/planetscale/vtprotobuf/pull/22
 
 		oneofs := make(map[string]struct{}, len(message.Fields))
 		for i := len(message.Fields) - 1; i >= 0; i-- {

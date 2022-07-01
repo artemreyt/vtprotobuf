@@ -9,7 +9,7 @@ import (
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/reflect/protoreflect"
 
-	"github.com/artemreyt/vtprotobuf/generator"
+	"github.com/planetscale/vtprotobuf/generator"
 )
 
 func init() {

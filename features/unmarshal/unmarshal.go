@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/artemreyt/vtprotobuf/generator"
+	"github.com/planetscale/vtprotobuf/generator"
 	"google.golang.org/protobuf/compiler/protogen"
 	"google.golang.org/protobuf/encoding/protowire"
 	"google.golang.org/protobuf/reflect/protoreflect"
